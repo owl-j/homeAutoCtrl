@@ -21,6 +21,7 @@
 
 
 module lightsFSM(
+    input reset,
     input masterEnable,
     input masterSwitch,
     input bathroomSwitch,
