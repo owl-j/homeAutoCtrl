@@ -39,8 +39,10 @@ module fourDigitSSDController(
     
     
     // Each beat refresh the activeDisplay
-    always @(posedge beat) begin
-        activeDisplay = activeDisplay + 1'b1; // 2-bit overflow counter
+    always @(posedge clk) begin
+        if (beat) begin
+            activeDisplay <= activeDisplay + 1'b1; // 2-bit overflow counter
+        end
     end
     
     always @(*) begin

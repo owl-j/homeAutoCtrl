@@ -90,7 +90,9 @@ module tempFSM(
         
     // Output Logic
     always @(*) begin
-        if (state == IDLE) begin
+        if (reset) ssdDisplay = 16'hAAAA;
+        else if (confirm) ssdDisplay = 16'h0000;
+        else if (state == IDLE) begin
             // Display only current Temp
             // 4'hA -> underscore signal for decoder
             ssdDisplay = {12'hAA2,outsideTemp};

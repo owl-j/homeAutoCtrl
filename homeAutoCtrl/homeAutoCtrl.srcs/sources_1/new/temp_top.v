@@ -33,8 +33,8 @@ module temp_top(
     wire de_btn_C, ps_btn_C;
     assign LED = fourDigitBCD;
     //Analog to Digital Conversion of "Confirm" Signal
-    debouncer de_Center (.switchIn(btn_C),.clk(clk),.reset(reset),.debounceout(de_btn_C));
-    spot spot_Center (.clk(clk), .spot_in(de_btn_C), .spot_out(ps_btn_C));
+    //debouncer de_Center (.switchIn(btn_C),.clk(clk),.reset(reset),.debounceout(de_btn_C));
+    spot spot_Center (.clk(clk), .spot_in(btn_C), .spot_out(ps_btn_C));
     
     // Temperature Control Logic
     tempFSM FSM (

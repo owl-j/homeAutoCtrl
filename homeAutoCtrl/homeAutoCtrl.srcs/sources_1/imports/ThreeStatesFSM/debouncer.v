@@ -5,7 +5,7 @@ input wire reset,
 output wire debounceout);
 
 wire beat;
-heartbeat #(.TOPCOUNT(10_000_000)) beatEvent (.clk(clk), .reset(reset), .beat(beat));
+heartbeat #(.TOPCOUNT(1_000_000)) beatEvent (.clk(clk), .reset(reset), .beat(beat));
 
 reg [2:0] pipeline;
 
