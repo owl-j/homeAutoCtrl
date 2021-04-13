@@ -138,7 +138,7 @@ OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet {{C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.runs/synth_1/temp_top.dcp}}
 OPTRACE "read constraints: implementation" START { }
-  read_xdc {{C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.srcs/constrs_1/imports/new/MicrowaveFSM_constraint_Basys3.xdc}}
+  read_xdc {{C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.srcs/constrs_1/imports/new/tempFunc_constraint_Basys3.xdc}}
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

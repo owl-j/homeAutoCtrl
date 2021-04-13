@@ -25,8 +25,8 @@ module temp_top(
     input wire btn_C,
     input wire [3:0] sw, //sw [3] is the enable signal, sw[2:0] is the 8-bit input
     input wire reset,
-    output wire [3:0] ssdAnode,
-    output wire [6:0] segment
+    output wire [3:0] an, //ssdAnode
+    output wire [6:0] seg //ssdCathode
     );
     
     //Seven Segment Display Output Encoding
@@ -52,7 +52,7 @@ module temp_top(
         .displayEncoding(fourDigitBCD),
         .clk(sysclk),
         .reset(reset),
-        .ssdAnode(ssdAnode),
-        .ssdCathode(segment)
+        .ssdAnode(an),
+        .ssdCathode(seg)
     );
 endmodule

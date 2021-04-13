@@ -104,8 +104,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc {{C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.srcs/constrs_1/imports/new/MicrowaveFSM_constraint_Basys3.xdc}}
-set_property used_in_implementation false [get_files {{C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.srcs/constrs_1/imports/new/MicrowaveFSM_constraint_Basys3.xdc}}]
+read_xdc {{C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.srcs/constrs_1/imports/new/tempFunc_constraint_Basys3.xdc}}
+set_property used_in_implementation false [get_files {{C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.srcs/constrs_1/imports/new/tempFunc_constraint_Basys3.xdc}}]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
