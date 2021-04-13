@@ -1,11 +1,14 @@
-module debouncer (
-input wire switchIn,
-input wire clk,
-input wire reset,
-output wire debounceout);
+module debouncer #( 
+    parameter TOPCOUNT = 2_000_000 // Sample rate =  ((100_000_000/TOPCOUNT) * 3)
+    )(
+    input wire switchIn,
+    input wire clk,
+    input wire reset,
+    output wire debounceout
+);
 
 wire beat;
-heartbeat #(.TOPCOUNT(1_000_000)) beatEvent (.clk(clk), .reset(reset), .beat(beat));
+heartbeat #(.TOPCOUNT(TOPCOUNT)) beatEvent (.clk(clk), .reset(reset), .beat(beat));
 
 reg [2:0] pipeline;
 

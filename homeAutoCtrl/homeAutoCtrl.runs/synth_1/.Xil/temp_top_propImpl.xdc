@@ -7,6 +7,8 @@ set_property src_info {type:XDC file:1 line:14 export:INPUT save:INPUT read:READ
 set_property PACKAGE_PIN V16 [get_ports {sw[1]}]
 set_property src_info {type:XDC file:1 line:16 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN W16 [get_ports {sw[2]}]
+set_property src_info {type:XDC file:1 line:18 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN W17 [get_ports {sw[3]}]
 set_property src_info {type:XDC file:1 line:47 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict {PACKAGE_PIN U16 IOSTANDARD LVCMOS33} [get_ports {LED[0]}]
 set_property src_info {type:XDC file:1 line:48 export:INPUT save:INPUT read:READ} [current_design]
