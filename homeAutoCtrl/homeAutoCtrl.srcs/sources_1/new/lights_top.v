@@ -21,9 +21,28 @@
 
 
 module lights_top(
-    input [5:0] sw,
-    input clk,
-    input reset,
-    output [2:0] led
+    input wire [15:9] sw,
+    input wire nextBtn,
+    input wire sysclk,
+    input wire reset,
+    output wire [6:0] led
+    );
+    
+    wire de_nextBtn, ps_nextBtn;    
+    debouncer de_Center (.switchIn(nextBtn),.clk(sysclk),.reset(reset),.debounceout(de_nextBtn));
+    spot spot_Center (.clk(sysclk), .spot_in(de_nextBtn), .spot_out(ps_nextBtn));
+    
+    lightsFSM lightController (
+        .reset(reset),
+        .clk(sysclk),
+        .masterEnable(sw[15]),
+        .masterSwitch(sw[14]),
+        .bathroomLightSwitch(sw[13]),
+        .bathroomSensor(sw[12]),
+        .nightSensor(sw[11]),
+        .outdoorMotionSensor(sw[10]),
+        .outdoorLightSwitch(sw[9]),
+        .nextBtn(nextBtn),
+        .led(led)
     );
 endmodule

@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1618286981">
-  <File Type="BITSTR-BMM" Name="temp_top_bd.bmm"/>
-  <File Type="OPT-METHODOLOGY-DRC" Name="temp_top_methodology_drc_opted.rpt"/>
-  <File Type="INIT-TIMING" Name="temp_top_timing_summary_init.rpt"/>
-  <File Type="ROUTE-PWR" Name="temp_top_power_routed.rpt"/>
-  <File Type="PA-TCL" Name="temp_top.tcl"/>
-  <File Type="OPT-TIMING" Name="temp_top_timing_summary_opted.rpt"/>
-  <File Type="OPT-DCP" Name="temp_top_opt.dcp"/>
-  <File Type="ROUTE-PWR-SUM" Name="temp_top_power_summary_routed.pb"/>
-  <File Type="REPORTS-TCL" Name="temp_top_reports.tcl"/>
-  <File Type="OPT-DRC" Name="temp_top_drc_opted.rpt"/>
-  <File Type="OPT-HWDEF" Name="temp_top.hwdef"/>
-  <File Type="PWROPT-DCP" Name="temp_top_pwropt.dcp"/>
-  <File Type="PWROPT-DRC" Name="temp_top_drc_pwropted.rpt"/>
-  <File Type="PWROPT-TIMING" Name="temp_top_timing_summary_pwropted.rpt"/>
-  <File Type="PLACE-DCP" Name="temp_top_placed.dcp"/>
-  <File Type="PLACE-IO" Name="temp_top_io_placed.rpt"/>
-  <File Type="PLACE-CLK" Name="temp_top_clock_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL" Name="temp_top_utilization_placed.rpt"/>
-  <File Type="PLACE-UTIL-PB" Name="temp_top_utilization_placed.pb"/>
-  <File Type="PLACE-CTRL" Name="temp_top_control_sets_placed.rpt"/>
-  <File Type="PLACE-SIMILARITY" Name="temp_top_incremental_reuse_placed.rpt"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="temp_top_incremental_reuse_pre_placed.rpt"/>
-  <File Type="PLACE-TIMING" Name="temp_top_timing_summary_placed.rpt"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="temp_top_postplace_pwropt.dcp"/>
-  <File Type="BG-BIN" Name="temp_top.bin"/>
-  <File Type="POSTPLACE-PWROPT-TIMING" Name="temp_top_timing_summary_postplace_pwropted.rpt"/>
-  <File Type="PHYSOPT-DCP" Name="temp_top_physopt.dcp"/>
-  <File Type="PHYSOPT-DRC" Name="temp_top_drc_physopted.rpt"/>
-  <File Type="BITSTR-MSK" Name="temp_top.msk"/>
-  <File Type="PHYSOPT-TIMING" Name="temp_top_timing_summary_physopted.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="temp_top_routed_error.dcp"/>
-  <File Type="ROUTE-DCP" Name="temp_top_routed.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="temp_top_routed_bb.dcp"/>
-  <File Type="ROUTE-DRC" Name="temp_top_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-PB" Name="temp_top_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="temp_top_drc_routed.rpx"/>
-  <File Type="BITSTR-MMI" Name="temp_top.mmi"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="temp_top_methodology_drc_routed.rpt"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="temp_top_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="temp_top_methodology_drc_routed.pb"/>
-  <File Type="ROUTE-PWR-RPX" Name="temp_top_power_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="temp_top_route_status.rpt"/>
-  <File Type="ROUTE-STATUS-PB" Name="temp_top_route_status.pb"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="temp_top_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-PB" Name="temp_top_timing_summary_routed.pb"/>
-  <File Type="ROUTE-TIMING-RPX" Name="temp_top_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-SIMILARITY" Name="temp_top_incremental_reuse_routed.rpt"/>
-  <File Type="ROUTE-CLK" Name="temp_top_clock_utilization_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW" Name="temp_top_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-PB" Name="temp_top_bus_skew_routed.pb"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="temp_top_bus_skew_routed.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="temp_top_postroute_physopt.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="temp_top_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="temp_top_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="temp_top_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="temp_top_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="temp_top_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="temp_top_bus_skew_postroute_physopted.pb"/>
-  <File Type="BG-BIT" Name="temp_top.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="temp_top_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BITSTR-RBT" Name="temp_top.rbt"/>
-  <File Type="BITSTR-NKY" Name="temp_top.nky"/>
-  <File Type="PDI-FILE" Name="temp_top.pdi"/>
-  <File Type="RCFI_FILE" Name="temp_top.rcfi"/>
-  <File Type="CFI_FILE" Name="temp_top.cfi"/>
-  <File Type="RNPI_FILE" Name="temp_top.rnpi"/>
-  <File Type="NPI_FILE" Name="temp_top.npi"/>
-  <File Type="RBD_FILE" Name="temp_top.rbd"/>
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1618463390">
+  <File Type="BITSTR-BMM" Name="lights_top_bd.bmm"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="lights_top_methodology_drc_opted.rpt"/>
+  <File Type="INIT-TIMING" Name="lights_top_timing_summary_init.rpt"/>
+  <File Type="ROUTE-PWR" Name="lights_top_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="lights_top.tcl"/>
+  <File Type="OPT-TIMING" Name="lights_top_timing_summary_opted.rpt"/>
+  <File Type="OPT-DCP" Name="lights_top_opt.dcp"/>
+  <File Type="ROUTE-PWR-SUM" Name="lights_top_power_summary_routed.pb"/>
+  <File Type="REPORTS-TCL" Name="lights_top_reports.tcl"/>
+  <File Type="OPT-DRC" Name="lights_top_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="lights_top.hwdef"/>
+  <File Type="PWROPT-DCP" Name="lights_top_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="lights_top_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="lights_top_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="lights_top_placed.dcp"/>
+  <File Type="PLACE-IO" Name="lights_top_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="lights_top_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="lights_top_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="lights_top_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="lights_top_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="lights_top_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="lights_top_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="lights_top_timing_summary_placed.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="lights_top_postplace_pwropt.dcp"/>
+  <File Type="BG-BIN" Name="lights_top.bin"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="lights_top_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="lights_top_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="lights_top_drc_physopted.rpt"/>
+  <File Type="BITSTR-MSK" Name="lights_top.msk"/>
+  <File Type="PHYSOPT-TIMING" Name="lights_top_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="lights_top_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="lights_top_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="lights_top_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="lights_top_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="lights_top_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="lights_top_drc_routed.rpx"/>
+  <File Type="BITSTR-MMI" Name="lights_top.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="lights_top_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="lights_top_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="lights_top_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="lights_top_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="lights_top_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="lights_top_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="lights_top_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="lights_top_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="lights_top_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="lights_top_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="lights_top_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="lights_top_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="lights_top_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="lights_top_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="lights_top_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="lights_top_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="lights_top_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="lights_top_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="lights_top_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="lights_top_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="lights_top_bus_skew_postroute_physopted.pb"/>
+  <File Type="BG-BIT" Name="lights_top.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="lights_top_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-RBT" Name="lights_top.rbt"/>
+  <File Type="BITSTR-NKY" Name="lights_top.nky"/>
+  <File Type="PDI-FILE" Name="lights_top.pdi"/>
+  <File Type="RCFI_FILE" Name="lights_top.rcfi"/>
+  <File Type="CFI_FILE" Name="lights_top.cfi"/>
+  <File Type="RNPI_FILE" Name="lights_top.rnpi"/>
+  <File Type="NPI_FILE" Name="lights_top.npi"/>
+  <File Type="RBD_FILE" Name="lights_top.rbd"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="temp_top.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="temp_top.sysdef"/>
-  <File Type="BG-BGN" Name="temp_top.bgn"/>
-  <File Type="BG-DRC" Name="temp_top.drc"/>
-  <File Type="RDI-RDI" Name="temp_top.vdi"/>
+  <File Type="BITSTR-LTX" Name="lights_top.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="lights_top.sysdef"/>
+  <File Type="BG-BGN" Name="lights_top.bgn"/>
+  <File Type="BG-DRC" Name="lights_top.drc"/>
+  <File Type="RDI-RDI" Name="lights_top.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
@@ -81,13 +81,6 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="D:/Xilinx/Projects/ANU Labs/Projects/ThreeStatesFSM/ThreeStatesFSM/debouncer.v"/>
         <Attr Name="ImportTime" Val="1616540855"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/fourDigitSSDController.v">
-      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -102,10 +95,8 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/Projects/single_seven_segment_display/single_seven_segment_display.srcs/sources_1/new/sevenSegmentDecoder.v">
+    <File Path="$PSRCDIR/sources_1/new/lightsFSM.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="D:/Xilinx/Projects/ANU Labs/Projects/single_seven_segment_display/single_seven_segment_display.srcs/sources_1/new/sevenSegmentDecoder.v"/>
-        <Attr Name="ImportTime" Val="1615865123"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -120,21 +111,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/tempFSM.v">
+    <File Path="$PSRCDIR/sources_1/new/lights_top.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/temp_top.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/homeAutoCtrl_top.v">
+    <File Path="$PSRCDIR/sources_1/new/fourDigitSSDController.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -142,7 +126,33 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/lightsFSM.v">
+    <File Path="$PSRCDIR/sources_1/imports/Projects/single_seven_segment_display/single_seven_segment_display.srcs/sources_1/new/sevenSegmentDecoder.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="D:/Xilinx/Projects/ANU Labs/Projects/single_seven_segment_display/single_seven_segment_display.srcs/sources_1/new/sevenSegmentDecoder.v"/>
+        <Attr Name="ImportTime" Val="1615865123"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/tempFSM.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/temp_top.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/homeAutoCtrl_top.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -168,7 +178,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="temp_top"/>
+      <Option Name="TopModule" Val="lights_top"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

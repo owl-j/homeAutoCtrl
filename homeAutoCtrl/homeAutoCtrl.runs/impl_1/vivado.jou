@@ -2,11 +2,11 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Tue Apr 13 14:11:09 2021
-# Process ID: 32332
+# Start of session at: Thu Apr 15 15:10:57 2021
+# Process ID: 16672
 # Current directory: C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.runs/impl_1
-# Command line: vivado.exe -log temp_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source temp_top.tcl -notrace
-# Log file: C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.runs/impl_1/temp_top.vdi
+# Command line: vivado.exe -log lights_top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source lights_top.tcl -notrace
+# Log file: C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.runs/impl_1/lights_top.vdi
 # Journal file: C:/Users/Oliver Johnson/Documents/ANU/2021/engn3213/homeAutoCtrl/homeAutoCtrl/homeAutoCtrl.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
-source temp_top.tcl -notrace
+source lights_top.tcl -notrace
