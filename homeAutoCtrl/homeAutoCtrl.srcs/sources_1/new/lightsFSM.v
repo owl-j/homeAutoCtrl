@@ -21,13 +21,34 @@
 
 
 module lightsFSM(
-    input reset,
-    input masterEnable,
-    input masterSwitch,
-    input bathroomSwitch,
-    input nightSensor,
-    input bathroomSensor,
-    input outdoorMotionSensor,
-    output [2:0] led
+    input wire reset,
+    input wire masterEnable,
+    input wire masterSwitch,
+    input wire bathroomSwitch,
+    input wire nightSensor,
+    input wire bathroomSensor,
+    input wire outdoorMotionSensor,
+    output wire [2:0] led
     );
+    
+    reg bathroomLight, outdoorLight;
+    reg modeOutput;
+    
+    assign led = {bathroomLight,outdoorLight,masterEnable};
+    
+    // Master Override Logic
+    always @(*) begin
+        if(masterEnable) begin
+            bathroomLight = masterSwitch;
+            outdoorLight = masterSwitch;
+        end else begin
+            bathroomLight = bathroomSensor; // NOTE: If the sensor stops detecting motion then it will immediately turn off.
+            outdoorLight = modeOutput;
+        end
+    end
+    
+    //
+    
+    
+    
 endmodule
