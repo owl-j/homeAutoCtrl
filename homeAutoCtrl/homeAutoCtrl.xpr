@@ -73,8 +73,16 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
+      <File Path="$PSRCDIR/sources_1/new/homeAutoCtrl_top.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/imports/ThreeStatesFSM/debouncer.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="D:/Xilinx/Projects/ANU Labs/Projects/ThreeStatesFSM/ThreeStatesFSM/debouncer.v"/>
           <Attr Name="ImportTime" Val="1616540855"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -84,6 +92,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/ThreeStatesFSM/heartbeat.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="D:/Xilinx/Projects/ANU Labs/Projects/ThreeStatesFSM/ThreeStatesFSM/heartbeat.v"/>
           <Attr Name="ImportTime" Val="1616540855"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -93,6 +102,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/lightsFSM.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -100,6 +110,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/ThreeStatesFSM/spot.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="ImportPath" Val="D:/Xilinx/Projects/ANU Labs/Projects/ThreeStatesFSM/ThreeStatesFSM/spot.v"/>
           <Attr Name="ImportTime" Val="1616540855"/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -109,6 +120,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/lights_top.v">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -148,14 +160,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/homeAutoCtrl_top.v">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/garageFSM.v">
         <FileInfo>
           <Attr Name="AutoDisabled" Val="1"/>
@@ -174,7 +178,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="lights_top"/>
+        <Option Name="TopModule" Val="homeAutoCtrl_top"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
