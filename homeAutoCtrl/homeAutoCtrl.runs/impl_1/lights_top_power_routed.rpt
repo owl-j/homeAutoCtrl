@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Thu Apr 15 15:12:02 2021
+| Date             : Sun Apr 18 22:37:41 2021
 | Host             : OliversXPS running 64-bit major release  (build 9200)
 | Command          : report_power -file lights_top_power_routed.rpt -pb lights_top_power_summary_routed.pb -rpx lights_top_power_routed.rpx
 | Design           : lights_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.079        |
+| Total On-Chip Power (W)  | 0.076        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.007        |
+| Dynamic (W)              | 0.004        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -53,15 +53,15 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |       62 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       16 |     20800 |            0.08 |
-|   CARRY4       |    <0.001 |        7 |      8150 |            0.09 |
-|   Register     |    <0.001 |       33 |     41600 |            0.08 |
-|   Others       |     0.000 |        4 |       --- |             --- |
-| Signals        |    <0.001 |       59 |       --- |             --- |
-| I/O            |     0.006 |       17 |       106 |           16.04 |
+| Slice Logic    |    <0.001 |      106 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       24 |     20800 |            0.12 |
+|   CARRY4       |    <0.001 |       13 |      8150 |            0.16 |
+|   Register     |    <0.001 |       56 |     41600 |            0.13 |
+|   Others       |     0.000 |       10 |       --- |             --- |
+| Signals        |    <0.001 |       95 |       --- |             --- |
+| I/O            |     0.003 |       13 |       106 |           12.26 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.079 |          |           |                 |
+| Total          |     0.076 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Vccint    |       1.000 |     0.011 |       0.001 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -140,7 +140,7 @@ Table of Contents
 +------------+-----------+
 | Name       | Power (W) |
 +------------+-----------+
-| lights_top |     0.007 |
+| lights_top |     0.004 |
 +------------+-----------+
 
 

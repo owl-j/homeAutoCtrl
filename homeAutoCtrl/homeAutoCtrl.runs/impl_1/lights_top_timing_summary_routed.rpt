@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Thu Apr 15 15:12:02 2021
+| Date         : Sun Apr 18 22:37:41 2021
 | Host         : OliversXPS running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file lights_top_timing_summary_routed.rpt -pb lights_top_timing_summary_routed.pb -rpx lights_top_timing_summary_routed.rpx -warn_on_violation
 | Design       : lights_top
@@ -44,7 +44,7 @@ Table of Contents
 3. checking pulse_width_clock (0)
 4. checking unconstrained_internal_endpoints (0)
 5. checking no_input_delay (3)
-6. checking no_output_delay (3)
+6. checking no_output_delay (1)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -81,9 +81,9 @@ Table of Contents
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (3)
+6. checking no_output_delay (1)
 -------------------------------
- There are 3 ports with no output delay specified. (HIGH)
+ There is 1 port with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -128,7 +128,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-      5.546        0.000                      0                   60        0.262        0.000                      0                   60        4.500        0.000                       0                    34  
+      5.278        0.000                      0                  104        0.158        0.000                      0                  104        4.500        0.000                       0                    57  
 
 
 All user specified timing constraints are met.
@@ -151,7 +151,7 @@ sys_clk_pin  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-sys_clk_pin         5.546        0.000                      0                   60        0.262        0.000                      0                   60        4.500        0.000                       0                    34  
+sys_clk_pin         5.278        0.000                      0                  104        0.158        0.000                      0                  104        4.500        0.000                       0                    57  
 
 
 ------------------------------------------------------------------------------------------------
@@ -182,15 +182,15 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 From Clock:  sys_clk_pin
   To Clock:  sys_clk_pin
 
-Setup :            0  Failing Endpoints,  Worst Slack        5.546ns,  Total Violation        0.000ns
-Hold  :            0  Failing Endpoints,  Worst Slack        0.262ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack        5.278ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.158ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             5.546ns  (required time - arrival time)
+Slack (MET) :             5.278ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[24]/R
@@ -198,7 +198,7 @@ Slack (MET) :             5.546ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.965ns  (logic 0.828ns (20.881%)  route 3.137ns (79.119%))
+  Data Path Delay:        4.234ns  (logic 0.828ns (19.557%)  route 3.406ns (80.443%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
   Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
@@ -219,18 +219,18 @@ Slack (MET) :             5.546ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.883     9.125    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[24]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.167     9.393    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y49         FDRE                                         r  lightController/one_Hz_hb/count_reg[24]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -240,18 +240,18 @@ Slack (MET) :             5.546ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.520    14.861    lightController/one_Hz_hb/CLK
-    SLICE_X65Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[24]/C
+                         net (fo=56, routed)          1.520    14.861    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y49         FDRE                                         r  lightController/one_Hz_hb/count_reg[24]/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X65Y48         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[24]
+    SLICE_X63Y49         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[24]
   -------------------------------------------------------------------
                          required time                         14.671    
-                         arrival time                          -9.125    
+                         arrival time                          -9.393    
   -------------------------------------------------------------------
-                         slack                                  5.546    
+                         slack                                  5.278    
 
-Slack (MET) :             5.546ns  (required time - arrival time)
+Slack (MET) :             5.278ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[25]/R
@@ -259,7 +259,7 @@ Slack (MET) :             5.546ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.965ns  (logic 0.828ns (20.881%)  route 3.137ns (79.119%))
+  Data Path Delay:        4.234ns  (logic 0.828ns (19.557%)  route 3.406ns (80.443%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
   Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
@@ -280,18 +280,18 @@ Slack (MET) :             5.546ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.883     9.125    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[25]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.167     9.393    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y49         FDRE                                         r  lightController/one_Hz_hb/count_reg[25]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -301,18 +301,18 @@ Slack (MET) :             5.546ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.520    14.861    lightController/one_Hz_hb/CLK
-    SLICE_X65Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[25]/C
+                         net (fo=56, routed)          1.520    14.861    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y49         FDRE                                         r  lightController/one_Hz_hb/count_reg[25]/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X65Y48         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[25]
+    SLICE_X63Y49         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[25]
   -------------------------------------------------------------------
                          required time                         14.671    
-                         arrival time                          -9.125    
+                         arrival time                          -9.393    
   -------------------------------------------------------------------
-                         slack                                  5.546    
+                         slack                                  5.278    
 
-Slack (MET) :             5.546ns  (required time - arrival time)
+Slack (MET) :             5.278ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[26]/R
@@ -320,7 +320,7 @@ Slack (MET) :             5.546ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.965ns  (logic 0.828ns (20.881%)  route 3.137ns (79.119%))
+  Data Path Delay:        4.234ns  (logic 0.828ns (19.557%)  route 3.406ns (80.443%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
   Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
@@ -341,18 +341,18 @@ Slack (MET) :             5.546ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.883     9.125    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[26]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.167     9.393    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y49         FDRE                                         r  lightController/one_Hz_hb/count_reg[26]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -362,18 +362,18 @@ Slack (MET) :             5.546ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.520    14.861    lightController/one_Hz_hb/CLK
-    SLICE_X65Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[26]/C
+                         net (fo=56, routed)          1.520    14.861    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y49         FDRE                                         r  lightController/one_Hz_hb/count_reg[26]/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X65Y48         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[26]
+    SLICE_X63Y49         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[26]
   -------------------------------------------------------------------
                          required time                         14.671    
-                         arrival time                          -9.125    
+                         arrival time                          -9.393    
   -------------------------------------------------------------------
-                         slack                                  5.546    
+                         slack                                  5.278    
 
-Slack (MET) :             5.685ns  (required time - arrival time)
+Slack (MET) :             5.420ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[20]/R
@@ -381,7 +381,7 @@ Slack (MET) :             5.685ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.827ns  (logic 0.828ns (21.636%)  route 2.999ns (78.364%))
+  Data Path Delay:        4.092ns  (logic 0.828ns (20.235%)  route 3.264ns (79.765%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
   Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
@@ -402,18 +402,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.745     8.986    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[20]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.025     9.251    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[20]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -423,18 +423,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.520    14.861    lightController/one_Hz_hb/CLK
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[20]/C
+                         net (fo=56, routed)          1.520    14.861    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[20]/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X65Y47         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[20]
+    SLICE_X63Y48         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[20]
   -------------------------------------------------------------------
                          required time                         14.671    
-                         arrival time                          -8.986    
+                         arrival time                          -9.251    
   -------------------------------------------------------------------
-                         slack                                  5.685    
+                         slack                                  5.420    
 
-Slack (MET) :             5.685ns  (required time - arrival time)
+Slack (MET) :             5.420ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[21]/R
@@ -442,7 +442,7 @@ Slack (MET) :             5.685ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.827ns  (logic 0.828ns (21.636%)  route 2.999ns (78.364%))
+  Data Path Delay:        4.092ns  (logic 0.828ns (20.235%)  route 3.264ns (79.765%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
   Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
@@ -463,18 +463,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.745     8.986    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[21]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.025     9.251    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[21]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -484,18 +484,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.520    14.861    lightController/one_Hz_hb/CLK
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[21]/C
+                         net (fo=56, routed)          1.520    14.861    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[21]/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X65Y47         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[21]
+    SLICE_X63Y48         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[21]
   -------------------------------------------------------------------
                          required time                         14.671    
-                         arrival time                          -8.986    
+                         arrival time                          -9.251    
   -------------------------------------------------------------------
-                         slack                                  5.685    
+                         slack                                  5.420    
 
-Slack (MET) :             5.685ns  (required time - arrival time)
+Slack (MET) :             5.420ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[22]/R
@@ -503,7 +503,7 @@ Slack (MET) :             5.685ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.827ns  (logic 0.828ns (21.636%)  route 2.999ns (78.364%))
+  Data Path Delay:        4.092ns  (logic 0.828ns (20.235%)  route 3.264ns (79.765%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
   Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
@@ -524,18 +524,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.745     8.986    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[22]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.025     9.251    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[22]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -545,18 +545,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.520    14.861    lightController/one_Hz_hb/CLK
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[22]/C
+                         net (fo=56, routed)          1.520    14.861    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[22]/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X65Y47         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[22]
+    SLICE_X63Y48         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[22]
   -------------------------------------------------------------------
                          required time                         14.671    
-                         arrival time                          -8.986    
+                         arrival time                          -9.251    
   -------------------------------------------------------------------
-                         slack                                  5.685    
+                         slack                                  5.420    
 
-Slack (MET) :             5.685ns  (required time - arrival time)
+Slack (MET) :             5.420ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[23]/R
@@ -564,7 +564,7 @@ Slack (MET) :             5.685ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.827ns  (logic 0.828ns (21.636%)  route 2.999ns (78.364%))
+  Data Path Delay:        4.092ns  (logic 0.828ns (20.235%)  route 3.264ns (79.765%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
   Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    4.861ns = ( 14.861 - 10.000 ) 
@@ -585,18 +585,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.745     8.986    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.025     9.251    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -606,18 +606,18 @@ Slack (MET) :             5.685ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.520    14.861    lightController/one_Hz_hb/CLK
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/C
+                         net (fo=56, routed)          1.520    14.861    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/C
                          clock pessimism              0.274    15.135    
                          clock uncertainty           -0.035    15.100    
-    SLICE_X65Y47         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[23]
+    SLICE_X63Y48         FDRE (Setup_fdre_C_R)       -0.429    14.671    lightController/one_Hz_hb/count_reg[23]
   -------------------------------------------------------------------
                          required time                         14.671    
-                         arrival time                          -8.986    
+                         arrival time                          -9.251    
   -------------------------------------------------------------------
-                         slack                                  5.685    
+                         slack                                  5.420    
 
-Slack (MET) :             5.761ns  (required time - arrival time)
+Slack (MET) :             5.433ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[0]/R
@@ -625,10 +625,10 @@ Slack (MET) :             5.761ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.749ns  (logic 0.828ns (22.087%)  route 2.921ns (77.913%))
+  Data Path Delay:        4.078ns  (logic 0.828ns (20.305%)  route 3.250ns (79.695%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
-  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
     Source Clock Delay      (SCD):    5.159ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -646,18 +646,18 @@ Slack (MET) :             5.761ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.666     8.908    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[0]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.012     9.237    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -667,18 +667,18 @@ Slack (MET) :             5.761ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.518    14.859    lightController/one_Hz_hb/CLK
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[0]/C
-                         clock pessimism              0.274    15.133    
-                         clock uncertainty           -0.035    15.098    
-    SLICE_X65Y42         FDRE (Setup_fdre_C_R)       -0.429    14.669    lightController/one_Hz_hb/count_reg[0]
+                         net (fo=56, routed)          1.519    14.860    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[0]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X63Y43         FDRE (Setup_fdre_C_R)       -0.429    14.670    lightController/one_Hz_hb/count_reg[0]
   -------------------------------------------------------------------
-                         required time                         14.669    
-                         arrival time                          -8.908    
+                         required time                         14.670    
+                         arrival time                          -9.237    
   -------------------------------------------------------------------
-                         slack                                  5.761    
+                         slack                                  5.433    
 
-Slack (MET) :             5.761ns  (required time - arrival time)
+Slack (MET) :             5.433ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[1]/R
@@ -686,10 +686,10 @@ Slack (MET) :             5.761ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.749ns  (logic 0.828ns (22.087%)  route 2.921ns (77.913%))
+  Data Path Delay:        4.078ns  (logic 0.828ns (20.305%)  route 3.250ns (79.695%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
-  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
     Source Clock Delay      (SCD):    5.159ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -707,18 +707,18 @@ Slack (MET) :             5.761ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.666     8.908    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[1]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.012     9.237    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -728,18 +728,18 @@ Slack (MET) :             5.761ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.518    14.859    lightController/one_Hz_hb/CLK
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[1]/C
-                         clock pessimism              0.274    15.133    
-                         clock uncertainty           -0.035    15.098    
-    SLICE_X65Y42         FDRE (Setup_fdre_C_R)       -0.429    14.669    lightController/one_Hz_hb/count_reg[1]
+                         net (fo=56, routed)          1.519    14.860    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[1]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X63Y43         FDRE (Setup_fdre_C_R)       -0.429    14.670    lightController/one_Hz_hb/count_reg[1]
   -------------------------------------------------------------------
-                         required time                         14.669    
-                         arrival time                          -8.908    
+                         required time                         14.670    
+                         arrival time                          -9.237    
   -------------------------------------------------------------------
-                         slack                                  5.761    
+                         slack                                  5.433    
 
-Slack (MET) :             5.761ns  (required time - arrival time)
+Slack (MET) :             5.433ns  (required time - arrival time)
   Source:                 lightController/one_Hz_hb/count_reg[7]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Destination:            lightController/one_Hz_hb/count_reg[2]/R
@@ -747,10 +747,10 @@ Slack (MET) :             5.761ns  (required time - arrival time)
   Path Group:             sys_clk_pin
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        3.749ns  (logic 0.828ns (22.087%)  route 2.921ns (77.913%))
+  Data Path Delay:        4.078ns  (logic 0.828ns (20.305%)  route 3.250ns (79.695%))
   Logic Levels:           3  (LUT4=1 LUT6=2)
-  Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
-    Destination Clock Delay (DCD):    4.859ns = ( 14.859 - 10.000 ) 
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
     Source Clock Delay      (SCD):    5.159ns
     Clock Pessimism Removal (CPR):    0.274ns
   Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
@@ -768,18 +768,18 @@ Slack (MET) :             5.761ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.967     3.425    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.638     5.159    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          1.638     5.159    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
-                         net (fo=2, routed)           0.825     6.440    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X64Y45         LUT4 (Prop_lut4_I1_O)        0.124     6.564 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
-                         net (fo=1, routed)           0.811     7.375    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
-    SLICE_X64Y43         LUT6 (Prop_lut6_I4_O)        0.124     7.499 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
-                         net (fo=3, routed)           0.619     8.118    lightController/one_Hz_hb/count_reg[6]_0
-    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.242 r  lightController/one_Hz_hb/count[0]_i_1/O
-                         net (fo=27, routed)          0.666     8.908    lightController/one_Hz_hb/oneHzbeat
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[2]/R
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.456     5.615 r  lightController/one_Hz_hb/count_reg[7]/Q
+                         net (fo=2, routed)           0.977     6.592    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X64Y46         LUT4 (Prop_lut4_I1_O)        0.124     6.716 f  lightController/one_Hz_hb/OMSDelay[1]_i_5/O
+                         net (fo=1, routed)           0.821     7.538    lightController/one_Hz_hb/OMSDelay[1]_i_5_n_0
+    SLICE_X64Y44         LUT6 (Prop_lut6_I4_O)        0.124     7.662 f  lightController/one_Hz_hb/OMSDelay[1]_i_2/O
+                         net (fo=3, routed)           0.440     8.102    lightController/one_Hz_hb/count_reg[6]_0
+    SLICE_X64Y45         LUT6 (Prop_lut6_I5_O)        0.124     8.226 r  lightController/one_Hz_hb/count[0]_i_1/O
+                         net (fo=27, routed)          1.012     9.237    lightController/one_Hz_hb/oneHzbeat
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -789,16 +789,16 @@ Slack (MET) :             5.761ns  (required time - arrival time)
     W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           1.862    13.250    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          1.518    14.859    lightController/one_Hz_hb/CLK
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[2]/C
-                         clock pessimism              0.274    15.133    
-                         clock uncertainty           -0.035    15.098    
-    SLICE_X65Y42         FDRE (Setup_fdre_C_R)       -0.429    14.669    lightController/one_Hz_hb/count_reg[2]
+                         net (fo=56, routed)          1.519    14.860    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[2]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X63Y43         FDRE (Setup_fdre_C_R)       -0.429    14.670    lightController/one_Hz_hb/count_reg[2]
   -------------------------------------------------------------------
-                         required time                         14.669    
-                         arrival time                          -8.908    
+                         required time                         14.670    
+                         arrival time                          -9.237    
   -------------------------------------------------------------------
-                         slack                                  5.761    
+                         slack                                  5.433    
 
 
 
@@ -806,10 +806,163 @@ Slack (MET) :             5.761ns  (required time - arrival time)
 
 Min Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             0.262ns  (arrival time - required time)
-  Source:                 lightController/one_Hz_hb/count_reg[19]/C
+Slack (MET) :             0.158ns  (arrival time - required time)
+  Source:                 de_Center/pipeline_reg[0]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/one_Hz_hb/count_reg[19]/D
+  Destination:            de_Center/pipeline_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.295ns  (logic 0.186ns (63.006%)  route 0.109ns (36.994%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.991ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.498ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.594     1.477    de_Center/sysclk_IBUF_BUFG
+    SLICE_X59Y45         FDRE                                         r  de_Center/pipeline_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X59Y45         FDRE (Prop_fdre_C_Q)         0.141     1.618 r  de_Center/pipeline_reg[0]/Q
+                         net (fo=3, routed)           0.109     1.727    de_Center/beatEvent/p_0_in[0]
+    SLICE_X60Y45         LUT6 (Prop_lut6_I4_O)        0.045     1.772 r  de_Center/beatEvent/pipeline[1]_i_1/O
+                         net (fo=1, routed)           0.000     1.772    de_Center/beatEvent_n_1
+    SLICE_X60Y45         FDRE                                         r  de_Center/pipeline_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.864     1.991    de_Center/sysclk_IBUF_BUFG
+    SLICE_X60Y45         FDRE                                         r  de_Center/pipeline_reg[1]/C
+                         clock pessimism             -0.498     1.493    
+    SLICE_X60Y45         FDRE (Hold_fdre_C_D)         0.121     1.614    de_Center/pipeline_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -1.614    
+                         arrival time                           1.772    
+  -------------------------------------------------------------------
+                         slack                                  0.158    
+
+Slack (MET) :             0.255ns  (arrival time - required time)
+  Source:                 lightController/FSM_sequential_state_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            lightController/FSM_sequential_state_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.362ns  (logic 0.183ns (50.525%)  route 0.179ns (49.475%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.991ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.594     1.477    lightController/sysclk_IBUF_BUFG
+    SLICE_X61Y45         FDRE                                         r  lightController/FSM_sequential_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y45         FDRE (Prop_fdre_C_Q)         0.141     1.618 r  lightController/FSM_sequential_state_reg[0]/Q
+                         net (fo=4, routed)           0.179     1.797    lightController/state[0]
+    SLICE_X61Y45         LUT4 (Prop_lut4_I2_O)        0.042     1.839 r  lightController/FSM_sequential_state[1]_i_1/O
+                         net (fo=1, routed)           0.000     1.839    lightController/FSM_sequential_state[1]_i_1_n_0
+    SLICE_X61Y45         FDRE                                         r  lightController/FSM_sequential_state_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.864     1.991    lightController/sysclk_IBUF_BUFG
+    SLICE_X61Y45         FDRE                                         r  lightController/FSM_sequential_state_reg[1]/C
+                         clock pessimism             -0.514     1.477    
+    SLICE_X61Y45         FDRE (Hold_fdre_C_D)         0.107     1.584    lightController/FSM_sequential_state_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -1.584    
+                         arrival time                           1.839    
+  -------------------------------------------------------------------
+                         slack                                  0.255    
+
+Slack (MET) :             0.259ns  (arrival time - required time)
+  Source:                 lightController/OMSDelay_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            lightController/OMSDelay_reg[1]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.351ns  (logic 0.186ns (52.940%)  route 0.165ns (47.060%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.991ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.514ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.594     1.477    lightController/sysclk_IBUF_BUFG
+    SLICE_X61Y45         FDRE                                         r  lightController/OMSDelay_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X61Y45         FDRE (Prop_fdre_C_Q)         0.141     1.618 r  lightController/OMSDelay_reg[1]/Q
+                         net (fo=3, routed)           0.165     1.783    lightController/OMSDelay[1]
+    SLICE_X61Y45         LUT6 (Prop_lut6_I3_O)        0.045     1.828 r  lightController/OMSDelay[1]_i_1/O
+                         net (fo=1, routed)           0.000     1.828    lightController/OMSDelay[1]_i_1_n_0
+    SLICE_X61Y45         FDRE                                         r  lightController/OMSDelay_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.864     1.991    lightController/sysclk_IBUF_BUFG
+    SLICE_X61Y45         FDRE                                         r  lightController/OMSDelay_reg[1]/C
+                         clock pessimism             -0.514     1.477    
+    SLICE_X61Y45         FDRE (Hold_fdre_C_D)         0.092     1.569    lightController/OMSDelay_reg[1]
+  -------------------------------------------------------------------
+                         required time                         -1.569    
+                         arrival time                           1.828    
+  -------------------------------------------------------------------
+                         slack                                  0.259    
+
+Slack (MET) :             0.262ns  (arrival time - required time)
+  Source:                 lightController/one_Hz_hb/count_reg[15]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            lightController/one_Hz_hb/count_reg[15]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
@@ -830,15 +983,15 @@ Slack (MET) :             0.262ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/one_Hz_hb/CLK
-    SLICE_X65Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[19]/C
+                         net (fo=56, routed)          0.595     1.478    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[15]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y46         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[19]/Q
-                         net (fo=2, routed)           0.118     1.737    lightController/one_Hz_hb/count_reg[19]
-    SLICE_X65Y46         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.108     1.845 r  lightController/one_Hz_hb/count_reg[16]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.845    lightController/one_Hz_hb/count_reg[16]_i_1_n_4
-    SLICE_X65Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[19]/D
+    SLICE_X63Y46         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[15]/Q
+                         net (fo=2, routed)           0.118     1.737    lightController/one_Hz_hb/count_reg[15]
+    SLICE_X63Y46         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.845 r  lightController/one_Hz_hb/count_reg[12]_i_1__0/O[3]
+                         net (fo=1, routed)           0.000     1.845    lightController/one_Hz_hb/count_reg[12]_i_1__0_n_4
+    SLICE_X63Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[15]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -848,10 +1001,10 @@ Slack (MET) :             0.262ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/one_Hz_hb/CLK
-    SLICE_X65Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[19]/C
+                         net (fo=56, routed)          0.866     1.993    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[15]/C
                          clock pessimism             -0.515     1.478    
-    SLICE_X65Y46         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[19]
+    SLICE_X63Y46         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[15]
   -------------------------------------------------------------------
                          required time                         -1.583    
                          arrival time                           1.845    
@@ -859,174 +1012,19 @@ Slack (MET) :             0.262ns  (arrival time - required time)
                          slack                                  0.262    
 
 Slack (MET) :             0.263ns  (arrival time - required time)
-  Source:                 lightController/OMSDelay_reg[1]/C
+  Source:                 de_Center/pipeline_reg[2]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/OMSDelay_reg[1]/D
+  Destination:            de_Center/pipeline_reg[2]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.383ns  (logic 0.209ns (54.569%)  route 0.174ns (45.431%))
+  Data Path Delay:        0.383ns  (logic 0.209ns (54.540%)  route 0.174ns (45.460%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/CLK
-    SLICE_X64Y44         FDRE                                         r  lightController/OMSDelay_reg[1]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X64Y44         FDRE (Prop_fdre_C_Q)         0.164     1.642 r  lightController/OMSDelay_reg[1]/Q
-                         net (fo=3, routed)           0.174     1.816    lightController/OMSDelay[1]
-    SLICE_X64Y44         LUT6 (Prop_lut6_I3_O)        0.045     1.861 r  lightController/OMSDelay[1]_i_1/O
-                         net (fo=1, routed)           0.000     1.861    lightController/OMSDelay[1]_i_1_n_0
-    SLICE_X64Y44         FDRE                                         r  lightController/OMSDelay_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/CLK
-    SLICE_X64Y44         FDRE                                         r  lightController/OMSDelay_reg[1]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X64Y44         FDRE (Hold_fdre_C_D)         0.120     1.598    lightController/OMSDelay_reg[1]
-  -------------------------------------------------------------------
-                         required time                         -1.598    
-                         arrival time                           1.861    
-  -------------------------------------------------------------------
-                         slack                                  0.263    
-
-Slack (MET) :             0.263ns  (arrival time - required time)
-  Source:                 lightController/one_Hz_hb/count_reg[15]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/one_Hz_hb/count_reg[15]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.368ns  (logic 0.249ns (67.612%)  route 0.119ns (32.388%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/one_Hz_hb/CLK
-    SLICE_X65Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[15]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X65Y45         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[15]/Q
-                         net (fo=2, routed)           0.119     1.738    lightController/one_Hz_hb/count_reg[15]
-    SLICE_X65Y45         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.108     1.846 r  lightController/one_Hz_hb/count_reg[12]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.846    lightController/one_Hz_hb/count_reg[12]_i_1_n_4
-    SLICE_X65Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[15]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/one_Hz_hb/CLK
-    SLICE_X65Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[15]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X65Y45         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[15]
-  -------------------------------------------------------------------
-                         required time                         -1.583    
-                         arrival time                           1.846    
-  -------------------------------------------------------------------
-                         slack                                  0.263    
-
-Slack (MET) :             0.263ns  (arrival time - required time)
-  Source:                 lightController/one_Hz_hb/count_reg[23]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/one_Hz_hb/count_reg[23]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.368ns  (logic 0.249ns (67.612%)  route 0.119ns (32.388%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.994ns
-    Source Clock Delay      (SCD):    1.479ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.596     1.479    lightController/one_Hz_hb/CLK
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X65Y47         FDRE (Prop_fdre_C_Q)         0.141     1.620 r  lightController/one_Hz_hb/count_reg[23]/Q
-                         net (fo=2, routed)           0.119     1.739    lightController/one_Hz_hb/count_reg[23]
-    SLICE_X65Y47         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.108     1.847 r  lightController/one_Hz_hb/count_reg[20]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.847    lightController/one_Hz_hb/count_reg[20]_i_1_n_4
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.867     1.994    lightController/one_Hz_hb/CLK
-    SLICE_X65Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/C
-                         clock pessimism             -0.515     1.479    
-    SLICE_X65Y47         FDRE (Hold_fdre_C_D)         0.105     1.584    lightController/one_Hz_hb/count_reg[23]
-  -------------------------------------------------------------------
-                         required time                         -1.584    
-                         arrival time                           1.847    
-  -------------------------------------------------------------------
-                         slack                                  0.263    
-
-Slack (MET) :             0.263ns  (arrival time - required time)
-  Source:                 lightController/one_Hz_hb/count_reg[3]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/one_Hz_hb/count_reg[3]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.368ns  (logic 0.249ns (67.612%)  route 0.119ns (32.388%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.992ns
+    Destination Clock Delay (DCD):    1.991ns
     Source Clock Delay      (SCD):    1.477ns
-    Clock Pessimism Removal (CPR):    0.515ns
+    Clock Pessimism Removal (CPR):    0.514ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
@@ -1037,15 +1035,14 @@ Slack (MET) :             0.263ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.594     1.477    lightController/one_Hz_hb/CLK
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[3]/C
+                         net (fo=56, routed)          0.594     1.477    de_Center/sysclk_IBUF_BUFG
+    SLICE_X60Y45         FDRE                                         r  de_Center/pipeline_reg[2]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y42         FDRE (Prop_fdre_C_Q)         0.141     1.618 r  lightController/one_Hz_hb/count_reg[3]/Q
-                         net (fo=2, routed)           0.119     1.737    lightController/one_Hz_hb/count_reg[3]
-    SLICE_X65Y42         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.108     1.845 r  lightController/one_Hz_hb/count_reg[0]_i_2/O[3]
-                         net (fo=1, routed)           0.000     1.845    lightController/one_Hz_hb/count_reg[0]_i_2_n_4
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[3]/D
+    SLICE_X60Y45         FDRE (Prop_fdre_C_Q)         0.164     1.641 r  de_Center/pipeline_reg[2]/Q
+                         net (fo=3, routed)           0.174     1.815    de_Center/beatEvent/pipeline_reg[2]
+    SLICE_X60Y45         LUT6 (Prop_lut6_I5_O)        0.045     1.860 r  de_Center/beatEvent/pipeline[2]_i_1/O
+                         net (fo=1, routed)           0.000     1.860    de_Center/beatEvent_n_2
+    SLICE_X60Y45         FDRE                                         r  de_Center/pipeline_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1055,13 +1052,13 @@ Slack (MET) :             0.263ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.865     1.992    lightController/one_Hz_hb/CLK
-    SLICE_X65Y42         FDRE                                         r  lightController/one_Hz_hb/count_reg[3]/C
-                         clock pessimism             -0.515     1.477    
-    SLICE_X65Y42         FDRE (Hold_fdre_C_D)         0.105     1.582    lightController/one_Hz_hb/count_reg[3]
+                         net (fo=56, routed)          0.864     1.991    de_Center/sysclk_IBUF_BUFG
+    SLICE_X60Y45         FDRE                                         r  de_Center/pipeline_reg[2]/C
+                         clock pessimism             -0.514     1.477    
+    SLICE_X60Y45         FDRE (Hold_fdre_C_D)         0.120     1.597    de_Center/pipeline_reg[2]
   -------------------------------------------------------------------
-                         required time                         -1.582    
-                         arrival time                           1.845    
+                         required time                         -1.597    
+                         arrival time                           1.860    
   -------------------------------------------------------------------
                          slack                                  0.263    
 
@@ -1089,15 +1086,15 @@ Slack (MET) :             0.264ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/one_Hz_hb/CLK
-    SLICE_X65Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[11]/C
+                         net (fo=56, routed)          0.595     1.478    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[11]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y44         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[11]/Q
+    SLICE_X63Y45         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[11]/Q
                          net (fo=2, routed)           0.120     1.739    lightController/one_Hz_hb/count_reg[11]
-    SLICE_X65Y44         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.108     1.847 r  lightController/one_Hz_hb/count_reg[8]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.847    lightController/one_Hz_hb/count_reg[8]_i_1_n_4
-    SLICE_X65Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[11]/D
+    SLICE_X63Y45         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.847 r  lightController/one_Hz_hb/count_reg[8]_i_1__0/O[3]
+                         net (fo=1, routed)           0.000     1.847    lightController/one_Hz_hb/count_reg[8]_i_1__0_n_4
+    SLICE_X63Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[11]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1107,10 +1104,114 @@ Slack (MET) :             0.264ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/one_Hz_hb/CLK
-    SLICE_X65Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[11]/C
+                         net (fo=56, routed)          0.866     1.993    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[11]/C
                          clock pessimism             -0.515     1.478    
-    SLICE_X65Y44         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[11]
+    SLICE_X63Y45         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[11]
+  -------------------------------------------------------------------
+                         required time                         -1.583    
+                         arrival time                           1.847    
+  -------------------------------------------------------------------
+                         slack                                  0.264    
+
+Slack (MET) :             0.264ns  (arrival time - required time)
+  Source:                 lightController/one_Hz_hb/count_reg[23]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            lightController/one_Hz_hb/count_reg[23]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.596     1.479    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X63Y48         FDRE (Prop_fdre_C_Q)         0.141     1.620 r  lightController/one_Hz_hb/count_reg[23]/Q
+                         net (fo=2, routed)           0.120     1.740    lightController/one_Hz_hb/count_reg[23]
+    SLICE_X63Y48         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.848 r  lightController/one_Hz_hb/count_reg[20]_i_1__0/O[3]
+                         net (fo=1, routed)           0.000     1.848    lightController/one_Hz_hb/count_reg[20]_i_1__0_n_4
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.867     1.994    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y48         FDRE                                         r  lightController/one_Hz_hb/count_reg[23]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X63Y48         FDRE (Hold_fdre_C_D)         0.105     1.584    lightController/one_Hz_hb/count_reg[23]
+  -------------------------------------------------------------------
+                         required time                         -1.584    
+                         arrival time                           1.848    
+  -------------------------------------------------------------------
+                         slack                                  0.264    
+
+Slack (MET) :             0.264ns  (arrival time - required time)
+  Source:                 lightController/one_Hz_hb/count_reg[3]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            lightController/one_Hz_hb/count_reg[3]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
+  Logic Levels:           1  (CARRY4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.595     1.478    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[3]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X63Y43         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[3]/Q
+                         net (fo=2, routed)           0.120     1.739    lightController/one_Hz_hb/count_reg[3]
+    SLICE_X63Y43         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.847 r  lightController/one_Hz_hb/count_reg[0]_i_2__0/O[3]
+                         net (fo=1, routed)           0.000     1.847    lightController/one_Hz_hb/count_reg[0]_i_2__0_n_4
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  sysclk (IN)
+                         net (fo=0)                   0.000     0.000    sysclk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
+                         net (fo=56, routed)          0.866     1.993    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[3]/C
+                         clock pessimism             -0.515     1.478    
+    SLICE_X63Y43         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[3]
   -------------------------------------------------------------------
                          required time                         -1.583    
                          arrival time                           1.847    
@@ -1125,7 +1226,7 @@ Slack (MET) :             0.264ns  (arrival time - required time)
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.369ns  (logic 0.249ns (67.412%)  route 0.120ns (32.588%))
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.424%)  route 0.120ns (32.576%))
   Logic Levels:           1  (CARRY4=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    1.993ns
@@ -1141,15 +1242,15 @@ Slack (MET) :             0.264ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          0.595     1.478    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[7]/Q
+    SLICE_X63Y44         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[7]/Q
                          net (fo=2, routed)           0.120     1.739    lightController/one_Hz_hb/count_reg[7]
-    SLICE_X65Y43         CARRY4 (Prop_carry4_S[3]_O[3])
-                                                      0.108     1.847 r  lightController/one_Hz_hb/count_reg[4]_i_1/O[3]
-                         net (fo=1, routed)           0.000     1.847    lightController/one_Hz_hb/count_reg[4]_i_1_n_4
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/D
+    SLICE_X63Y44         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.847 r  lightController/one_Hz_hb/count_reg[4]_i_1__0/O[3]
+                         net (fo=1, routed)           0.000     1.847    lightController/one_Hz_hb/count_reg[4]_i_1__0_n_4
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1159,29 +1260,29 @@ Slack (MET) :             0.264ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
+                         net (fo=56, routed)          0.866     1.993    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y44         FDRE                                         r  lightController/one_Hz_hb/count_reg[7]/C
                          clock pessimism             -0.515     1.478    
-    SLICE_X65Y43         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[7]
+    SLICE_X63Y44         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[7]
   -------------------------------------------------------------------
                          required time                         -1.583    
                          arrival time                           1.847    
   -------------------------------------------------------------------
                          slack                                  0.264    
 
-Slack (MET) :             0.267ns  (arrival time - required time)
-  Source:                 lightController/one_Hz_hb/count_reg[12]/C
+Slack (MET) :             0.264ns  (arrival time - required time)
+  Source:                 lightController/one_Hz_hb/count_reg[19]/C
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/one_Hz_hb/count_reg[12]/D
+  Destination:            lightController/one_Hz_hb/count_reg[19]/D
                             (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
   Path Group:             sys_clk_pin
   Path Type:              Hold (Min at Fast Process Corner)
   Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.372ns  (logic 0.256ns (68.766%)  route 0.116ns (31.234%))
+  Data Path Delay:        0.369ns  (logic 0.249ns (67.412%)  route 0.120ns (32.588%))
   Logic Levels:           1  (CARRY4=1)
   Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
     Clock Pessimism Removal (CPR):    0.515ns
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
@@ -1193,67 +1294,15 @@ Slack (MET) :             0.267ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.631     0.858    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/one_Hz_hb/CLK
-    SLICE_X65Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[12]/C
+                         net (fo=56, routed)          0.596     1.479    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[19]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X65Y45         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[12]/Q
-                         net (fo=2, routed)           0.116     1.735    lightController/one_Hz_hb/count_reg[12]
-    SLICE_X65Y45         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.850 r  lightController/one_Hz_hb/count_reg[12]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.850    lightController/one_Hz_hb/count_reg[12]_i_1_n_7
-    SLICE_X65Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[12]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/one_Hz_hb/CLK
-    SLICE_X65Y45         FDRE                                         r  lightController/one_Hz_hb/count_reg[12]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X65Y45         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[12]
-  -------------------------------------------------------------------
-                         required time                         -1.583    
-                         arrival time                           1.850    
-  -------------------------------------------------------------------
-                         slack                                  0.267    
-
-Slack (MET) :             0.267ns  (arrival time - required time)
-  Source:                 lightController/one_Hz_hb/count_reg[16]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/one_Hz_hb/count_reg[16]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.372ns  (logic 0.256ns (68.766%)  route 0.116ns (31.234%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/one_Hz_hb/CLK
-    SLICE_X65Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[16]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X65Y46         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[16]/Q
-                         net (fo=2, routed)           0.116     1.735    lightController/one_Hz_hb/count_reg[16]
-    SLICE_X65Y46         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.850 r  lightController/one_Hz_hb/count_reg[16]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.850    lightController/one_Hz_hb/count_reg[16]_i_1_n_7
-    SLICE_X65Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[16]/D
+    SLICE_X63Y47         FDRE (Prop_fdre_C_Q)         0.141     1.620 r  lightController/one_Hz_hb/count_reg[19]/Q
+                         net (fo=2, routed)           0.120     1.740    lightController/one_Hz_hb/count_reg[19]
+    SLICE_X63Y47         CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.108     1.848 r  lightController/one_Hz_hb/count_reg[16]_i_1__0/O[3]
+                         net (fo=1, routed)           0.000     1.848    lightController/one_Hz_hb/count_reg[16]_i_1__0_n_4
+    SLICE_X63Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[19]/D
   -------------------------------------------------------------------    -------------------
 
                          (clock sys_clk_pin rise edge)
@@ -1263,67 +1312,15 @@ Slack (MET) :             0.267ns  (arrival time - required time)
     W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
                          net (fo=1, routed)           0.685     1.099    sysclk_IBUF
     BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/one_Hz_hb/CLK
-    SLICE_X65Y46         FDRE                                         r  lightController/one_Hz_hb/count_reg[16]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X65Y46         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[16]
+                         net (fo=56, routed)          0.867     1.994    lightController/one_Hz_hb/sysclk_IBUF_BUFG
+    SLICE_X63Y47         FDRE                                         r  lightController/one_Hz_hb/count_reg[19]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X63Y47         FDRE (Hold_fdre_C_D)         0.105     1.584    lightController/one_Hz_hb/count_reg[19]
   -------------------------------------------------------------------
-                         required time                         -1.583    
-                         arrival time                           1.850    
+                         required time                         -1.584    
+                         arrival time                           1.848    
   -------------------------------------------------------------------
-                         slack                                  0.267    
-
-Slack (MET) :             0.267ns  (arrival time - required time)
-  Source:                 lightController/one_Hz_hb/count_reg[4]/C
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Destination:            lightController/one_Hz_hb/count_reg[4]/D
-                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
-  Path Group:             sys_clk_pin
-  Path Type:              Hold (Min at Fast Process Corner)
-  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
-  Data Path Delay:        0.372ns  (logic 0.256ns (68.766%)  route 0.116ns (31.234%))
-  Logic Levels:           1  (CARRY4=1)
-  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
-    Destination Clock Delay (DCD):    1.993ns
-    Source Clock Delay      (SCD):    1.478ns
-    Clock Pessimism Removal (CPR):    0.515ns
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.631     0.858    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.595     1.478    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[4]/C
-  -------------------------------------------------------------------    -------------------
-    SLICE_X65Y43         FDRE (Prop_fdre_C_Q)         0.141     1.619 r  lightController/one_Hz_hb/count_reg[4]/Q
-                         net (fo=2, routed)           0.116     1.735    lightController/one_Hz_hb/count_reg[4]
-    SLICE_X65Y43         CARRY4 (Prop_carry4_S[0]_O[0])
-                                                      0.115     1.850 r  lightController/one_Hz_hb/count_reg[4]_i_1/O[0]
-                         net (fo=1, routed)           0.000     1.850    lightController/one_Hz_hb/count_reg[4]_i_1_n_7
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[4]/D
-  -------------------------------------------------------------------    -------------------
-
-                         (clock sys_clk_pin rise edge)
-                                                      0.000     0.000 r  
-    W5                                                0.000     0.000 r  sysclk (IN)
-                         net (fo=0)                   0.000     0.000    sysclk
-    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  sysclk_IBUF_inst/O
-                         net (fo=1, routed)           0.685     1.099    sysclk_IBUF
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  sysclk_IBUF_BUFG_inst/O
-                         net (fo=33, routed)          0.866     1.993    lightController/one_Hz_hb/CLK
-    SLICE_X65Y43         FDRE                                         r  lightController/one_Hz_hb/count_reg[4]/C
-                         clock pessimism             -0.515     1.478    
-    SLICE_X65Y43         FDRE (Hold_fdre_C_D)         0.105     1.583    lightController/one_Hz_hb/count_reg[4]
-  -------------------------------------------------------------------
-                         required time                         -1.583    
-                         arrival time                           1.850    
-  -------------------------------------------------------------------
-                         slack                                  0.267    
+                         slack                                  0.264    
 
 
 
@@ -1338,35 +1335,35 @@ Sources:            { sysclk }
 
 Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
 Min Period        n/a     BUFG/I   n/a            2.155         10.000      7.845      BUFGCTRL_X0Y0  sysclk_IBUF_BUFG_inst/I
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X64Y43   lightController/FSM_sequential_state_reg[0]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X64Y43   lightController/FSM_sequential_state_reg[1]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X64Y44   lightController/OMSDelay_reg[0]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X64Y44   lightController/OMSDelay_reg[1]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X65Y42   lightController/one_Hz_hb/count_reg[0]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X65Y44   lightController/one_Hz_hb/count_reg[10]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X65Y44   lightController/one_Hz_hb/count_reg[11]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X65Y45   lightController/one_Hz_hb/count_reg[12]/C
-Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X65Y45   lightController/one_Hz_hb/count_reg[13]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y42   lightController/one_Hz_hb/count_reg[0]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y42   lightController/one_Hz_hb/count_reg[1]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y42   lightController/one_Hz_hb/count_reg[2]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y42   lightController/one_Hz_hb/count_reg[3]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y31    lightController/state_reg[0]/C
-Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X0Y31    lightController/state_reg[1]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y43   lightController/FSM_sequential_state_reg[0]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y43   lightController/FSM_sequential_state_reg[1]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y44   lightController/OMSDelay_reg[0]/C
-Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y44   lightController/OMSDelay_reg[1]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y43   lightController/FSM_sequential_state_reg[0]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y43   lightController/FSM_sequential_state_reg[1]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y44   lightController/OMSDelay_reg[0]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X64Y44   lightController/OMSDelay_reg[1]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y44   lightController/one_Hz_hb/count_reg[10]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y44   lightController/one_Hz_hb/count_reg[11]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y45   lightController/one_Hz_hb/count_reg[12]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y45   lightController/one_Hz_hb/count_reg[13]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y45   lightController/one_Hz_hb/count_reg[14]/C
-High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X65Y45   lightController/one_Hz_hb/count_reg[15]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y43   de_Center/beatEvent/count_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y45   de_Center/beatEvent/count_reg[10]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y45   de_Center/beatEvent/count_reg[11]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y46   de_Center/beatEvent/count_reg[12]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y46   de_Center/beatEvent/count_reg[13]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y46   de_Center/beatEvent/count_reg[14]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y46   de_Center/beatEvent/count_reg[15]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y47   de_Center/beatEvent/count_reg[16]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X62Y47   de_Center/beatEvent/count_reg[17]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y43   de_Center/beatEvent/count_reg[0]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y45   de_Center/beatEvent/count_reg[10]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y45   de_Center/beatEvent/count_reg[11]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[12]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[13]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[14]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[15]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y47   de_Center/beatEvent/count_reg[16]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y47   de_Center/beatEvent/count_reg[17]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y47   de_Center/beatEvent/count_reg[18]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y43   de_Center/beatEvent/count_reg[0]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y45   de_Center/beatEvent/count_reg[10]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y45   de_Center/beatEvent/count_reg[11]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[12]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[13]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[14]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y46   de_Center/beatEvent/count_reg[15]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y47   de_Center/beatEvent/count_reg[16]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y47   de_Center/beatEvent/count_reg[17]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X62Y47   de_Center/beatEvent/count_reg[18]/C
 
 
 

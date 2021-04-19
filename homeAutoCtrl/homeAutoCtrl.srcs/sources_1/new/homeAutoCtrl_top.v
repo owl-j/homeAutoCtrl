@@ -23,7 +23,6 @@
 module homeAutoCtrl_top(
     input wire sysclk,
     input wire reset,
-    input wire 
     input [15:0] sw,
     input garage,
     input lights,

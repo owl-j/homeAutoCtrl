@@ -31,14 +31,14 @@ module lightsFSM(
     input wire outdoorLightSwitch,
     input wire nextBtn,
     input wire clk,
-    output wire [6:0] led
+    output wire [2:0] led
     );
     
     reg bathroomLight, outdoorLight;
     reg outdoorFSMoutput;
     reg [1:0] OMSDelay;
     reg [1:0] state, nextState;
-    assign led = {state,bathroomLight,outdoorLight,masterEnable,reset,nextBtn};
+    assign led = {bathroomLight,outdoorLight,masterEnable};
     heartbeat #(.TOPCOUNT(100_000_000)) one_Hz_hb (.clk(clk),.reset(1'b0),.beat(oneHzbeat));
     
     // Master Override Logic

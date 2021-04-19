@@ -25,7 +25,7 @@ module lights_top(
     input wire nextBtn,
     input wire sysclk,
     input wire reset,
-    output wire [6:0] led
+    output wire [2:0] led
     );
     
     wire de_nextBtn, ps_nextBtn;    
@@ -42,7 +42,7 @@ module lights_top(
         .nightSensor(sw[11]),
         .outdoorMotionSensor(sw[10]),
         .outdoorLightSwitch(sw[9]),
-        .nextBtn(nextBtn),
+        .nextBtn(ps_nextBtn),
         .led(led)
     );
 endmodule
