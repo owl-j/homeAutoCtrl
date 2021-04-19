@@ -1,0 +1,90 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Mon Apr 19 13:43:06 2021
+| Host         : OliversXPS running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file homeAutoCtrl_top_control_sets_placed.rpt
+| Design       : homeAutoCtrl_top
+| Device       : xc7a35t
+---------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    12 |
+|    Minimum number of control sets                        |    12 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    62 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    12 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     8 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              17 |            8 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             162 |           44 |
+| Yes          | No                    | No                     |               7 |            4 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-------------------+--------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
+|    Clock Signal   |             Enable Signal            |                 Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------+--------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
+|  sysclk_IBUF_BUFG | de_Center/beatEvent/beat_1           |                                                 |                1 |              1 |         1.00 |
+|  sysclk_IBUF_BUFG | de_East/beatEvent/E[0]               |                                                 |                1 |              1 |         1.00 |
+|  sysclk_IBUF_BUFG | de_North/beatEvent/E[0]              |                                                 |                1 |              1 |         1.00 |
+|  sysclk_IBUF_BUFG | temperatureController/one_Hz_hb/E[0] |                                                 |                1 |              4 |         4.00 |
+|  sysclk_IBUF_BUFG |                                      |                                                 |                8 |             17 |         2.12 |
+|  sysclk_IBUF_BUFG |                                      | displayCtrl/one_kHz_beat/beat                   |                5 |             17 |         3.40 |
+|  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/delayed_spot_in_reg_0       |                6 |             21 |         3.50 |
+|  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/delayed_spot_in_reg         |                6 |             21 |         3.50 |
+|  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/count[0]_i_1_n_0            |                6 |             21 |         3.50 |
+|  sysclk_IBUF_BUFG |                                      | lightController/one_Hz_hb/oneHzbeat             |                7 |             27 |         3.86 |
+|  sysclk_IBUF_BUFG |                                      | temperatureController/one_Hz_hb/oneHzbeat       |                7 |             27 |         3.86 |
+|  sysclk_IBUF_BUFG |                                      | temperatureController/one_half_Hz_hb/halfHzbeat |                7 |             28 |         4.00 |
++-------------------+--------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
+
+

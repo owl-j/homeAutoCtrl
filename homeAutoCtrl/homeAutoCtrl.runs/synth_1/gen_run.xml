@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1618749247">
-  <File Type="PA-TCL" Name="lights_top.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="lights_top_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="lights_top_reports.tcl"/>
-  <File Type="RDS-RDS" Name="lights_top.vds"/>
-  <File Type="RDS-UTIL" Name="lights_top_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="lights_top_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="lights_top.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="lights_top_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="lights_top_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1618803546">
+  <File Type="PA-TCL" Name="homeAutoCtrl_top.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="homeAutoCtrl_top_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="homeAutoCtrl_top_reports.tcl"/>
+  <File Type="RDS-RDS" Name="homeAutoCtrl_top.vds"/>
+  <File Type="RDS-UTIL" Name="homeAutoCtrl_top_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="homeAutoCtrl_top_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="homeAutoCtrl_top.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="homeAutoCtrl_top_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="homeAutoCtrl_top_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/ThreeStatesFSM/debouncer.v">
@@ -105,7 +105,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="lights_top"/>
+      <Option Name="TopModule" Val="homeAutoCtrl_top"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

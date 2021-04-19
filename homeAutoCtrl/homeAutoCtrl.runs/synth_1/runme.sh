@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log lights_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source lights_top.tcl
+EAStep vivado -log homeAutoCtrl_top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source homeAutoCtrl_top.tcl
