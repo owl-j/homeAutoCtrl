@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Mon Apr 19 13:43:48 2021
+| Date             : Mon Apr 19 16:51:58 2021
 | Host             : OliversXPS running 64-bit major release  (build 9200)
 | Command          : report_power -file homeAutoCtrl_top_power_routed.rpt -pb homeAutoCtrl_top_power_summary_routed.pb -rpx homeAutoCtrl_top_power_routed.rpx
 | Design           : homeAutoCtrl_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.080        |
+| Total On-Chip Power (W)  | 0.083        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.008        |
+| Dynamic (W)              | 0.011        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
 | Max Ambient (C)          | 84.6         |
@@ -52,16 +52,16 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.001 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      377 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       93 |     20800 |            0.45 |
-|   CARRY4       |    <0.001 |       44 |      8150 |            0.54 |
-|   Register     |    <0.001 |      186 |     41600 |            0.45 |
-|   Others       |     0.000 |       34 |       --- |             --- |
-| Signals        |    <0.001 |      323 |       --- |             --- |
-| I/O            |     0.006 |       42 |       106 |           39.62 |
+| Clocks         |     0.002 |        3 |       --- |             --- |
+| Slice Logic    |    <0.001 |      536 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      141 |     20800 |            0.68 |
+|   CARRY4       |    <0.001 |       57 |      8150 |            0.70 |
+|   Register     |    <0.001 |      265 |     41600 |            0.64 |
+|   Others       |     0.000 |       45 |       --- |             --- |
+| Signals        |    <0.001 |      457 |       --- |             --- |
+| I/O            |     0.008 |       44 |       106 |           41.51 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.080 |          |           |                 |
+| Total          |     0.083 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -71,7 +71,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.012 |       0.003 |      0.010 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.013 |       0.004 |      0.010 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.003 |       0.002 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -140,7 +140,7 @@ Table of Contents
 +------------------+-----------+
 | Name             | Power (W) |
 +------------------+-----------+
-| homeAutoCtrl_top |     0.008 |
+| homeAutoCtrl_top |     0.011 |
 +------------------+-----------+
 
 

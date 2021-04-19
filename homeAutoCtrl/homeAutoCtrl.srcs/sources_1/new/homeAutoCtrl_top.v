@@ -79,9 +79,9 @@ module homeAutoCtrl_top(
     
     // 2. LED output concatenation.
     wire [2:0] lights;
-    wire [6:0] garage;
+    wire [5:0] garage;
     
-    assign led = {lights,6'b0,garage};
+    assign led = {lights,7'b0,garage};
     
     
     /* 
@@ -116,5 +116,20 @@ module homeAutoCtrl_top(
         );
     
     // 3. Garage Door Controller
+    garagedoor garageController (
+        .clk(sysclk),
+        .reset(reset),
+        .remote_btn(ps_btn_W),
+        .col_sens(sw[5]),
+        .LEDs(garage)
+        );
+    
+    // 4. Overall Controller
+    /*overrideFSM overrideController (
+        .clk(sysclk),
+        .reset(reset),
+        .on_off_sw(sw[6])),
+        .enable(global_enable)
+    );*/
     
 endmodule
