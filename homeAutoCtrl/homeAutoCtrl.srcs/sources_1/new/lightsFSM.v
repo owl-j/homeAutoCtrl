@@ -31,6 +31,7 @@ module lightsFSM(
     input wire outdoorLightSwitch,
     input wire nextBtn,
     input wire clk,
+    input wire enable,
     output wire [2:0] led
     );
     
@@ -43,7 +44,10 @@ module lightsFSM(
     
     // Master Override Logic
     always @(*) begin
-        if(masterEnable) begin
+        if(~enable) begin
+            bathroomLight = bathroomLightSwitch;
+            outdoorLight = outdoorLightSwitch;
+        end else if(masterEnable) begin
             bathroomLight = masterSwitch;
             outdoorLight = masterSwitch;
         end else begin

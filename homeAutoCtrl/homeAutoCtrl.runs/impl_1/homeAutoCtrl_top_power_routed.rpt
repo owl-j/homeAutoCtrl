@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date             : Mon Apr 19 16:51:58 2021
+| Date             : Mon Apr 19 18:04:48 2021
 | Host             : OliversXPS running 64-bit major release  (build 9200)
 | Command          : report_power -file homeAutoCtrl_top_power_routed.rpt -pb homeAutoCtrl_top_power_summary_routed.pb -rpx homeAutoCtrl_top_power_routed.rpx
 | Design           : homeAutoCtrl_top
@@ -30,7 +30,7 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.083        |
+| Total On-Chip Power (W)  | 0.082        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
 | Dynamic (W)              | 0.011        |
@@ -53,15 +53,15 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |     0.002 |        3 |       --- |             --- |
-| Slice Logic    |    <0.001 |      536 |       --- |             --- |
-|   LUT as Logic |    <0.001 |      141 |     20800 |            0.68 |
-|   CARRY4       |    <0.001 |       57 |      8150 |            0.70 |
-|   Register     |    <0.001 |      265 |     41600 |            0.64 |
-|   Others       |     0.000 |       45 |       --- |             --- |
-| Signals        |    <0.001 |      457 |       --- |             --- |
-| I/O            |     0.008 |       44 |       106 |           41.51 |
+| Slice Logic    |    <0.001 |      577 |       --- |             --- |
+|   LUT as Logic |    <0.001 |      157 |     20800 |            0.75 |
+|   CARRY4       |    <0.001 |       64 |      8150 |            0.79 |
+|   Register     |    <0.001 |      281 |     41600 |            0.68 |
+|   Others       |     0.000 |       46 |       --- |             --- |
+| Signals        |    <0.001 |      487 |       --- |             --- |
+| I/O            |     0.007 |       44 |       106 |           41.51 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.083 |          |           |                 |
+| Total          |     0.082 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 

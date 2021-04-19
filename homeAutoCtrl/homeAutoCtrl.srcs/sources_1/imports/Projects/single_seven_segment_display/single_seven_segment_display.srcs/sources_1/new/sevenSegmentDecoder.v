@@ -41,6 +41,8 @@ module sevenSegmentDecoder(
             4'hB : ssd = 7'b1111010; // Letter R
             4'hC : ssd = 7'b0111100; // Letter C
             4'hD : ssd = 7'b1000010; // Letter D
+            4'hE : ssd = 7'b1101010; // Letter N
+            4'hF : ssd = 7'b0111000; // Letter F
             default : ssd = 7'b1111111;
         endcase
     end

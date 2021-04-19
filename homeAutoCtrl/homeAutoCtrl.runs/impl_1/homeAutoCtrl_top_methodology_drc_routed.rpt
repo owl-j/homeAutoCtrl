@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Mon Apr 19 16:51:57 2021
+| Date         : Mon Apr 19 18:04:47 2021
 | Host         : OliversXPS running 64-bit major release  (build 9200)
 | Command      : report_methodology -file homeAutoCtrl_top_methodology_drc_routed.rpt -pb homeAutoCtrl_top_methodology_drc_routed.pb -rpx homeAutoCtrl_top_methodology_drc_routed.rpx
 | Design       : homeAutoCtrl_top
@@ -23,12 +23,11 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 59
+             Violations found: 47
 +-----------+----------+-------------------------------+------------+
 | Rule      | Severity | Description                   | Violations |
 +-----------+----------+-------------------------------+------------+
 | TIMING-18 | Warning  | Missing input or output delay | 47         |
-| TIMING-20 | Warning  | Non-clocked latch             | 12         |
 +-----------+----------+-------------------------------+------------+
 
 2. REPORT DETAILS
@@ -266,66 +265,6 @@ Related violations: <none>
 TIMING-18#47 Warning
 Missing input or output delay  
 An output delay is missing on seg[6] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-20#1 Warning
-Non-clocked latch  
-The latch garageController/FSM_onehot_nextstate_reg[0] cannot be properly analyzed as its control pin garageController/FSM_onehot_nextstate_reg[0]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#2 Warning
-Non-clocked latch  
-The latch garageController/FSM_onehot_nextstate_reg[1] cannot be properly analyzed as its control pin garageController/FSM_onehot_nextstate_reg[1]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#3 Warning
-Non-clocked latch  
-The latch garageController/FSM_onehot_nextstate_reg[2] cannot be properly analyzed as its control pin garageController/FSM_onehot_nextstate_reg[2]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#4 Warning
-Non-clocked latch  
-The latch garageController/FSM_onehot_nextstate_reg[3] cannot be properly analyzed as its control pin garageController/FSM_onehot_nextstate_reg[3]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#5 Warning
-Non-clocked latch  
-The latch garageController/FSM_onehot_nextstate_reg[4] cannot be properly analyzed as its control pin garageController/FSM_onehot_nextstate_reg[4]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#6 Warning
-Non-clocked latch  
-The latch garageController/FSM_onehot_nextstate_reg[5] cannot be properly analyzed as its control pin garageController/FSM_onehot_nextstate_reg[5]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#7 Warning
-Non-clocked latch  
-The latch garageController/LEDs_reg[0] cannot be properly analyzed as its control pin garageController/LEDs_reg[0]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#8 Warning
-Non-clocked latch  
-The latch garageController/LEDs_reg[1] cannot be properly analyzed as its control pin garageController/LEDs_reg[1]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#9 Warning
-Non-clocked latch  
-The latch garageController/LEDs_reg[2] cannot be properly analyzed as its control pin garageController/LEDs_reg[2]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#10 Warning
-Non-clocked latch  
-The latch garageController/LEDs_reg[3] cannot be properly analyzed as its control pin garageController/LEDs_reg[3]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#11 Warning
-Non-clocked latch  
-The latch garageController/LEDs_reg[4] cannot be properly analyzed as its control pin garageController/LEDs_reg[4]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#12 Warning
-Non-clocked latch  
-The latch garageController/LEDs_reg[5] cannot be properly analyzed as its control pin garageController/LEDs_reg[5]/G is not reached by a timing clock
 Related violations: <none>
 
 

@@ -53,6 +53,26 @@ module overrideFSM(
                     nextState = ON;
                 else
                     nextState = START;
+            end
+            ON : begin
+                nextState = ON;
+        endcase
+    end
+    
+    // Output Logic
+    always @(*) begin
+        case(state)
+            OFF : begin
+                global_enable = 1'b0
+                ssdEncoding = 16'hA0FF;
+            end
+            START : begin
+                global_enable = 1'b0;
+                ssdEncoding = 16'hAA0E;
+            end
+            ON : begin
+                global_enable = 1'b1;
+                ssdEncoding
                     
             
 endmodule

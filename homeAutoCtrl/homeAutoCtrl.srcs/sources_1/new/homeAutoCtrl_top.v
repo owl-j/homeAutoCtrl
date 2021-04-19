@@ -67,10 +67,11 @@ module homeAutoCtrl_top(
     /     2. LED Display Logic
     */
     // 1. SSD Display Controller: Maps Logic Encodings to 4-digit SSD output.
-    wire [15:0] fourDigitBCD;     // Seven Segment Display Output Encoding
+    reg [15:0] displayEncoding;
+    wire [15:0] fourDigitBCD;     // Seven Segment Display Encodings
     
     fourDigitSSDController displayCtrl(
-        .displayEncoding(fourDigitBCD),
+        .displayEncoding(displayEncoding),
         .clk(sysclk),
         .reset(reset),
         .ssdAnode(an),
@@ -86,15 +87,89 @@ module homeAutoCtrl_top(
     
     /* 
     / FUNCTION CONTROLLERS
-    /     1. Light Controller
-    /     2. Temperature Controller
-    /     3. Garage Door Controller
+    /     1. Override Controller
+    /     2. Light Controller
+    /     3. Temperature Controller
+    /     4. Garage Door Controller
     */
-    // 1. Light Controller
+    // 1. Override Controller
+    parameter OFF=2'd0, START=2'd1, ON=2'd2;
+    
+    wire oneHzbeat;
+    
+    heartbeat #(.TOPCOUNT(100000000))
+        this_hearbeat(.clk(sysclk), .reset(reset), .beat(oneHzbeat));
+    
+    reg [1:0] state, nextState;
+    wire on_off_sw = sw[6];
+    reg [1:0] delay = 2'b11;
+    reg global_enable = 1'b0;
+    
+    // State Memory
+    always @(posedge sysclk) begin
+        if (~on_off_sw) state <= OFF;
+        else if (reset) state <= START;
+        else state <= nextState;
+    end
+    
+    // State Transitions
+    always @(*) begin
+        case(state)
+            OFF : begin
+                if(on_off_sw)
+                    nextState = START;
+                else
+                    nextState = OFF;
+            end   
+            START : begin
+                if (delay == 2'b0)
+                    nextState = ON;
+                else
+                    nextState = START;
+            end
+            ON : begin
+                nextState = ON;
+            end
+            default : nextState = OFF;
+        endcase
+    end
+    
+    // Output Logic
+    always @(*) begin
+        case(state)
+            OFF : begin
+                global_enable = 1'b0;
+                displayEncoding = 16'hA0FF;
+            end
+            START : begin
+                global_enable = 1'b0;
+                displayEncoding = {2'b00,delay,12'hA0E};
+            end
+            ON : begin
+                global_enable = 1'b1;
+                displayEncoding = fourDigitBCD;
+            end
+            default : begin
+                global_enable = 1'b0;
+                displayEncoding = 16'hAAAA;
+            end
+        endcase
+    end
+    
+    always @(posedge sysclk) begin
+        if(reset || state == OFF || state == ON)
+            delay <= 2'b11;
+        else if(oneHzbeat)
+            delay <= delay - 1;
+    end
+    
+    
+    // 2. Light Controller
     lightsFSM lightController (
         .reset(reset),
         .clk(sysclk),
         .masterEnable(sw[15]),
+        .enable(global_enable),
         .masterSwitch(sw[14]),
         .bathroomLightSwitch(sw[13]),
         .bathroomSensor(sw[12]),
@@ -105,31 +180,25 @@ module homeAutoCtrl_top(
         .led(lights)
     );
     
-    // 2. Temperature Controller
+    // 3. Temperature Controller
     tempFSM temperatureController (
         .clk(sysclk),
         .reset(reset),
         .confirm(ps_btn_E),
         .targetSws(sw[2:0]),
-        .enable(sw[3]),
+        .enable(global_enable),
         .ssdDisplay(fourDigitBCD)
         );
     
-    // 3. Garage Door Controller
+    // 4. Garage Door Controller
     garagedoor garageController (
         .clk(sysclk),
         .reset(reset),
         .remote_btn(ps_btn_W),
         .col_sens(sw[5]),
-        .LEDs(garage)
+        .LEDs(garage),
+        .enable(global_enable)
         );
     
-    // 4. Overall Controller
-    /*overrideFSM overrideController (
-        .clk(sysclk),
-        .reset(reset),
-        .on_off_sw(sw[6])),
-        .enable(global_enable)
-    );*/
     
 endmodule

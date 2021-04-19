@@ -23,13 +23,13 @@
 module garagedoor(
     input wire clk,
     input wire remote_btn,
-    //input wire col_sensor,
+    input wire enable,
     input wire reset,
     input wire col_sens,
     output reg [5:0] LEDs
     );
     
-    parameter CLOSED = 3'd0, OPENING = 3'd1, OPEN = 3'd2, CLOSING = 3'd3, STOP = 3'd4, COL = 3'd5;
+    parameter CLOSED = 3'd0, OPENING = 3'd1, OPEN = 3'd2, CLOSING = 3'd3, STOP = 3'd4, COL = 3'd5, IDLE =3'd6;
     
     reg [2:0] state, nextstate, prevstate;
         
@@ -45,7 +45,9 @@ module garagedoor(
         this_hearbeat(.clk(clk), .reset(reset), .beat(oneHzbeat));
     
     always @(posedge clk) begin
-        if (reset) 
+        if (~enable)
+            state <= IDLE;
+        else if (reset) 
             state <= CLOSED;
         else
             state <= nextstate;
@@ -98,11 +100,20 @@ module garagedoor(
                 else
                     nextstate = CLOSING;
             end
+            
             COL : begin
                 if (delay == 2'b0)
                     nextstate = OPENING;
                 else nextstate = COL;
             end
+            
+            IDLE : begin
+                if (enable)
+                    nextstate = CLOSED;
+                else
+                    nextstate = IDLE;
+            end
+            default : nextstate = IDLE;
         endcase
     end
     
@@ -114,6 +125,8 @@ module garagedoor(
             CLOSING : LEDs = {LED_count_display,1'b1};
             STOP : LEDs = {LED_count_display,1'b0};
             OPEN : LEDs = 6'b100010;
+            IDLE : LEDs = 6'd0;
+            default : LEDs = 6'd0;
         endcase
    end
    
