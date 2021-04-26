@@ -81,8 +81,9 @@ module homeAutoCtrl_top(
     // 2. LED output concatenation.
     wire [2:0] lights;
     wire [5:0] garage;
+    wire [1:0] lights_state;
     
-    assign led = {lights,7'b0,garage};
+    assign led = {lights,1'b0,lights_state,4'b0,garage};
     
     
     /* 
@@ -177,7 +178,8 @@ module homeAutoCtrl_top(
         .outdoorMotionSensor(sw[10]),
         .outdoorLightSwitch(sw[9]),
         .nextBtn(ps_btn_N),
-        .led(lights)
+        .led(lights),
+        .lights_state(lights_state)
     );
     
     // 3. Temperature Controller

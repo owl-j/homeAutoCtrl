@@ -32,7 +32,8 @@ module lightsFSM(
     input wire nextBtn,
     input wire clk,
     input wire enable,
-    output wire [2:0] led
+    output wire [2:0] led,
+    output reg [1:0] lights_state
     );
     
     reg bathroomLight, outdoorLight;
@@ -47,19 +48,22 @@ module lightsFSM(
         if(~enable) begin
             bathroomLight = bathroomLightSwitch;
             outdoorLight = outdoorLightSwitch;
+            lights_state = 2'd0;
         end else if(masterEnable) begin
             bathroomLight = masterSwitch;
             outdoorLight = masterSwitch;
+            lights_state = 2'd0;
         end else begin
             bathroomLight = bathroomLightSwitch | bathroomSensor; // NOTE: If the sensor stops detecting motion then it will immediately turn off.
             outdoorLight = outdoorFSMoutput;
+            lights_state = state;
         end
     end
     
     // NLMODE -> Night-Light mode, control determined by daylight sensor
     // SECMODE -> Security Mode, control determined by movement sensor
     // DUMB -> Control determined by local switch
-    parameter DUMB=2'd0, NLMODE=2'd1, SECMODE=2'd2;
+    parameter DUMB=2'd1, NLMODE=2'd2, SECMODE=2'd3;
     
 
     

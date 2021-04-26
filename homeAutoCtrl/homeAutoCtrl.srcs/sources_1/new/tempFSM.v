@@ -100,7 +100,7 @@ module tempFSM(
         endcase
     end
     
-    // HEATING/COOLING LOGIC
+    // CLIMATE CONTROL LOGIC
     // count logic
     always @(*) begin
         // If the system is off, calculate the temperature difference between room and outside
@@ -120,7 +120,7 @@ module tempFSM(
         end
     end
     
-    // Temperature Change Logic
+    // Heating/Cooling Logic
     always @(posedge clk) begin
         if (count >= 1) begin
             // If OFF, simulate the room temperature changing to meet outside temperature

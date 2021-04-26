@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Mon Apr 19 18:04:20 2021
+| Date         : Mon Apr 26 22:25:47 2021
 | Host         : OliversXPS running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file homeAutoCtrl_top_control_sets_placed.rpt
 | Design       : homeAutoCtrl_top
@@ -58,7 +58,7 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              36 |           14 |
+| No           | No                    | No                     |              36 |           18 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |             237 |           64 |
 | Yes          | No                    | No                     |               8 |            6 |
@@ -81,14 +81,14 @@ Table of Contents
 |  sysclk_IBUF_BUFG |                                      | displayCtrl/one_kHz_beat/beat                   |                5 |             17 |         3.40 |
 |  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/delayed_spot_in_reg         |                6 |             21 |         3.50 |
 |  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/delayed_spot_in_reg_1       |                6 |             21 |         3.50 |
-|  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/count[0]_i_1_n_0            |                6 |             21 |         3.50 |
 |  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/delayed_spot_in_reg_0       |                6 |             21 |         3.50 |
+|  sysclk_IBUF_BUFG |                                      | de_Center/beatEvent/count[0]_i_1_n_0            |                6 |             21 |         3.50 |
 |  sysclk_IBUF_BUFG |                                      | lightController/one_Hz_hb/oneHzbeat             |                7 |             27 |         3.86 |
 |  sysclk_IBUF_BUFG |                                      | temperatureController/one_Hz_hb/oneHzbeat       |                7 |             27 |         3.86 |
-|  sysclk_IBUF_BUFG |                                      | de_Center/delayed_spot_in_reg_3                 |                7 |             27 |         3.86 |
 |  sysclk_IBUF_BUFG |                                      | de_Center/delayed_spot_in_reg_2                 |                7 |             27 |         3.86 |
+|  sysclk_IBUF_BUFG |                                      | de_Center/delayed_spot_in_reg_3                 |                7 |             27 |         3.86 |
 |  sysclk_IBUF_BUFG |                                      | temperatureController/one_half_Hz_hb/halfHzbeat |                7 |             28 |         4.00 |
-|  sysclk_IBUF_BUFG |                                      |                                                 |               14 |             36 |         2.57 |
+|  sysclk_IBUF_BUFG |                                      |                                                 |               18 |             36 |         2.00 |
 +-------------------+--------------------------------------+-------------------------------------------------+------------------+----------------+--------------+
 
 
